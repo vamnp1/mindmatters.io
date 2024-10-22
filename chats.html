@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMatters - Chats</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    <!-- Main Navigation Menu -->
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="MindMatters Logo">
+        </div>
+        <nav>
+            <ul id="main-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="blogs-stories.html">Blogs & Stories</a></li>
+                <li><a href="chats.html">Chats</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li id="login-signup">
+                    <a href="login.html" id="login">Login</a>
+                    <a href="signup.html" id="signup">Sign Up</a>
+                </li>
+                <li id="logout" style="display: none;"><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+
+         <!-- Chat Interface -->
+    <section class="chat-container">
+        <!-- Chat List -->
+        <div class="chat-list">
+            <div class="chat-header">
+                <h3>Chats</h3>
+                <div class="notification-icon">🔔</div>
+            </div>
+            <div class="chat-item" onclick="loadChat('Mr. King')">
+                <div class="chat-avatar">
+                    <img src="/images/avatar1.png" alt="Avatar" />
+                </div>
+                <div class="chat-info">
+                    <p class="chat-name">Mr. King</p>
+                    <p class="chat-last-message">Last Message</p>
+                </div>
+            </div>
+            <div class="chat-item" onclick="loadChat('Ms. Ram')">
+                <div class="chat-avatar">
+                    <img src="images/avatar2.png" alt="Avatar" />
+                </div>
+                <div class="chat-info">
+                    <p class="chat-name">Ms. Ram</p>
+                    <p class="chat-last-message">Last Message</p>
+                </div>
+            </div>
+            <div class="chat-item" onclick="loadChat('Mr. Kaido')">
+                <div class="chat-avatar">
+                    <img src="images/avatar3.png" alt="Avatar" />
+                </div>
+                <div class="chat-info">
+                    <p class="chat-name">Mr. Kaido</p>
+                    <p class="chat-last-message">Last Message</p>
+                </div>
+            </div>
+            <div class="chat-item" onclick="loadChat('Mr. Jack')">
+                <div class="chat-avatar">
+                    <img src="images/avatar4.png" alt="Avatar" />
+                </div>
+                <div class="chat-info">
+                    <p class="chat-name">Mr. Jack</p>
+                    <p class="chat-last-message">Last Message</p>
+                </div>
+            </div>
+            <div class="chat-item" onclick="loadChat('Ms. White')">
+                <div class="chat-avatar">
+                    <img src="images/avatar5.png" alt="Avatar" />
+                </div>
+                <div class="chat-info">
+                    <p class="chat-name">Ms. White</p>
+                    <p class="chat-last-message">Last Message</p>
+                </div>
+            </div>
+            <div class="chat-item" onclick="loadChat('Ms. Skye')">
+                <div class="chat-avatar">
+                    <img src="images/avatar3.png" alt="Avatar" />
+                </div>
+                <div class="chat-info">
+                    <p class="chat-name">Ms. Skye</p>
+                    <p class="chat-last-message">Last Message</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Messaging Area -->
+        <div class="messaging-area" id="message-area">
+            <p>Select a chat to view messages.</p>
+        </div>
+    </section>
+
+    <script>
+        // Example chat data
+        const chatMessages = {
+            "Mr. King": [
+                { sender: "Mr. King", message: "Hey, how are you?" },
+                { sender: "You", message: "I'm good, thanks! How about you?" },
+                { sender: "Mr. King", message: "Doing well, just checking in." }
+            ],
+            "Ms. Ram": [
+                { sender: "Ms. Ram", message: "Hello, are you free to talk?" },
+                { sender: "You", message: "Yes, what's up?" }
+            ],
+            "Mr. Kaido": [
+                { sender: "Mr. Kaido", message: "Can you send the report?" },
+                { sender: "You", message: "I'll send it by tomorrow." }
+            ],
+            "Mr. Jack": [
+                { sender: "Mr. Jack", message: "Let's catch up later!" }
+            ],
+            "Ms. White": [
+                { sender: "Ms. White", message: "Good morning!" }
+            ],
+            "Ms. Skye": [
+                { sender: "Ms. Skye", message: "What's the plan for today?" }
+            ]
+        };
+
+        // Function to load chat messages
+        function loadChat(name) {
+            const messageArea = document.getElementById("message-area");
+            const messages = chatMessages[name] || [];
+            
+            // Clear the messaging area
+            messageArea.innerHTML = '';
+
+            if (messages.length === 0) {
+                messageArea.innerHTML = `<p>No messages found for ${name}</p>`;
+                return;
+            }
+
+            messages.forEach(msg => {
+                const messageDiv = document.createElement("div");
+                messageDiv.innerHTML = `<strong>${msg.sender}:</strong> ${msg.message}`;
+                messageDiv.style.margin = "10px 0";
+                messageArea.appendChild(messageDiv);
+            });
+        }
+    </script>
+    <!-- Footer Menu -->
+    <footer>
+        <ul id="footer-menu">
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-of-service.html">Terms of Service</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+            <li><a href="company.html">Company</a></li>
+        </ul>
+        <p>&copy; 2024 MindMatters. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
